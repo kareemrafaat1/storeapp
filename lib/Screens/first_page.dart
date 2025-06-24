@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/Screens/account_page.dart';
+import 'package:my_app/Screens/bevarges_page.dart';
+import 'package:my_app/Screens/cart_page.dart';
+import 'package:my_app/Screens/explore_page.dart';
+
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});

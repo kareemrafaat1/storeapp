@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/home_page.dart';
-import 'login_page.dart';
-import 'signup_page.dart';
-import 'first_page.dart';
-import 'account_page.dart';
-import 'bevarges_page.dart';
-import 'explore_page.dart';
-import 'favourite_page.dart';
-import 'cart_page.dart';
+import 'package:my_app/Widgets/splach_screen.dart';
+import 'Screens/login_page.dart';
+import 'Screens/signup_page.dart';
+import 'Screens/first_page.dart';
+import 'Screens/account_page.dart';
+import 'Screens/bevarges_page.dart';
+import 'Screens/explore_page.dart';
+import 'Screens/favourite_page.dart';
+import 'Screens/cart_page.dart';
+import 'Screens/home_page.dart';
+
+
+
+
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +28,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',  // Set your initial route
+      // home: const SplashScreen(),  // Use SplashScreen as the initial screen
+      // initialRoute: '/',  // Set your initial route
       routes: {
         '/': (context) => const MyHomePage(),  // Your welcome screen
         '/login': (context) => const LoginPage(),
@@ -34,7 +40,9 @@ class MyApp extends StatelessWidget {
         '/explore_page': (context) => const ExplorePage(),
         '/favourite_page': (context) => const FavouritePage(),
         '/cart_page': (context) => const CartPage(),
-        '/home_page': (context) => const FirstPage(),  // Assuming FirstPage is your home
+        '/home_page': (context) => const FirstPage(), 
+        // Assuming you want to use FirstPage as the splash screen
+         // Assuming FirstPage is your home
       },
     );
   }
