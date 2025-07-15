@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BevargesPage extends StatefulWidget {
-  const BevargesPage({super.key});
+class BeveragesPage extends StatefulWidget {
+  const BeveragesPage({super.key});
 
   @override
-  State<BevargesPage> createState() => _BevargesPageState();
+  State<BeveragesPage> createState() => _BeveragesPageState();
 }
 
-class _BevargesPageState extends State<BevargesPage> {
+class _BeveragesPageState extends State<BeveragesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
