@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/Models/grocery_category_model.dart';
-
+import 'package:my_app/models/grocery_category_model.dart';
 class CategoryChipsCard extends StatelessWidget {
   final GroceryCategoryModel category;
   const CategoryChipsCard({
@@ -25,12 +24,12 @@ class CategoryChipsCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            category.imageUrl,
+            'assets/images/Group 6837.png',
             width: screenWidth * 0.1,
             height: screenWidth * 0.09,
             fit: BoxFit.cover,
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 8),
           Text(
             category.name,
             style: TextStyle(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/app_logo.dart';
+import 'package:my_app/core/widgets/app_logo.dart';
  
 
 class LocationSearch extends StatelessWidget {

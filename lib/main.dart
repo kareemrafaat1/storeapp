@@ -1,22 +1,10 @@
-
 import 'package:flutter/material.dart';
-import 'package:my_app/first_page.dart';
-import 'package:dio/dio.dart';
- 
+import 'package:my_app/core/app_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
-
-void main() async{
-
-final dio = Dio();
-
-
-  final response = await dio.get('https://dummyjson.com/products/category/groceries');
-
-  print(response);
-    runApp(const MyApp());
+void main() {
+  runApp( const ProviderScope(child:  MyApp()));
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,9 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:  FirstPage(),
+      initialRoute: '/',
+      routes: AppRouter.routes,
     );
   }
 }

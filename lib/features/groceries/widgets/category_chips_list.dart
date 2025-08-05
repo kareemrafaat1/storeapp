@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/Models/grocery_category_model.dart';
-import 'package:my_app/widgets/category_chips_card.dart';
+import 'package:my_app/features/groceries/widgets/category_chips_card.dart';
+import 'package:my_app/models/grocery_category_model.dart';
 
 class CategoryChipsList extends StatelessWidget {
   final List<GroceryCategoryModel> categories;
   final Function(String)? onCategorySelected; // Optional callback for category selection
 
   const CategoryChipsList({
-    Key? key,
+    super.key,
     required this.categories,
     this.onCategorySelected,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

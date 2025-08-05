@@ -10,13 +10,11 @@ class AddToCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: screenWidth * 0.08,
-        height: screenWidth * 0.08,
+        width: 20,
+        height: 20,
         decoration: const BoxDecoration(
           color: Color(0xFF53B175),
           shape: BoxShape.circle,
@@ -24,7 +22,7 @@ class AddToCartButton extends StatelessWidget {
         child: const Icon(
           Icons.add,
           color: Colors.white,
-          size: 16,
+          size: 14,
         ),
       ),
     );

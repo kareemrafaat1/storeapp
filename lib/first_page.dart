@@ -1,65 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/Models/api_sevices.dart';
-import 'package:my_app/Models/product_model.dart';
-import 'package:my_app/widgets/banner_section.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_app/features/groceries/widgets/banner_section.dart';
+import 'package:my_app/features/groceries/widgets/product_category_section.dart';
+import 'package:my_app/shared/providers.dart';
 import 'package:my_app/widgets/bottom_navigation_bar.dart';
-import 'package:my_app/widgets/groceries_section.dart';
 import 'package:my_app/widgets/location_search.dart';
-import 'package:my_app/widgets/production_section.dart';
 
-
-class FirstPage extends StatelessWidget {
-  final ApiService apiService = ApiService();
-
-   FirstPage({super.key});
+class FirstPage extends ConsumerWidget {
+  const FirstPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final apiService = ref.read(apiServiceProvider);
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const LocationSearch(),
-            const SizedBox(height: 8.0),
-            const BannerSection(),
-            const SizedBox(height: 8.0),
-            FutureBuilder<List<Product>>(
-              future: apiService.fetchProductsByCategory('groceries'),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                }
-                return ProductionSection(
-                  title: 'Exclusive Offers', 
-                  products: snapshot.data!,
-                );
-              },
+      bottomNavigationBar: const BottomNavigation(),
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(child: LocationSearch()),
+            const SliverToBoxAdapter(child: SizedBox(height: 8)),
+            const SliverToBoxAdapter(child: BannerSection()),
+            const SliverToBoxAdapter(child: SizedBox(height: 8)),
+
+            // Section 1 – Exclusive Offer
+            SliverToBoxAdapter(
+              child: ProductCategorySection(
+                category: 'fragrances',
+                title: 'Exclusive Offer',
+                apiService: apiService,
+              ),
             ),
-            const SizedBox(height: 8.0),
-            FutureBuilder<List<Product>>(
-              future: apiService.fetchProductsByCategory('beverages'),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                }
-                return ProductionSection(
-                  title: 'Exclusive Offers', 
-                  products: snapshot.data!,
-                );
-              },
+
+            const SliverToBoxAdapter(child: SizedBox(height: 8)),
+
+            // Section 2 – Best Selling
+            // SliverToBoxAdapter(
+            //   child: ProductCategorySection(
+            //     category: 'skincare',
+            //     title: 'Best Selling',
+            //     apiService: apiService,
+            //   ),
+            // ),
+
+            const SliverToBoxAdapter(child: SizedBox(height: 8)),
+
+            // Section 3 – Groceries
+            SliverToBoxAdapter(
+              child: ProductCategorySection(
+                category: 'laptops',
+                title: 'Electronics',
+                apiService: apiService,
+              ),
             ),
-            const SizedBox(height: 8.0),
-            const GroceriesSection(),
+
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+            // Optional: Popular Groceries
+            // const SliverToBoxAdapter(child: GroceriesSection()),
+             SliverToBoxAdapter(
+              child: ProductCategorySection(
+                category: 'groceries',
+                title: 'groceries',
+                apiService: apiService,
+              ),
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 16)),
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(),
     );
   }
 }
