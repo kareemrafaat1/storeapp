@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/features/cart/model/cart_notifier.dart';
 import 'package:my_app/features/favourite/screens/provider/favourite_notifier.dart';
-import 'package:my_app/models/product_model.dart';
 
 class FavouritePage extends ConsumerWidget {
   const FavouritePage({super.key});
@@ -41,7 +40,7 @@ class FavouritePage extends ConsumerWidget {
                       IconButton(
                         icon: const Icon(Icons.add_shopping_cart),
                         onPressed: () {
-                          cartNotifier.addToCart(product as Product);
+                          cartNotifier.addToCart(product);
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('${product.name} added to cart')),
                           );

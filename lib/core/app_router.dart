@@ -11,16 +11,20 @@ import 'package:my_app/features/splash/screens/splash_screen.dart';
 import 'package:my_app/first_page.dart';
 import 'package:my_app/home_page.dart';
 
+
 class AppRouter {
   static Map<String, WidgetBuilder> routes = {
-    '/': (context) => const SplashView(),
-      '/first': (context) =>  const MyHomePage(),
+  
+
+    '/splash': (context) => const SplashView(),
+    '/first': (context) => const MyHomePage(),
     '/login': (context) => const LoginPage(),
     '/signup': (context) => const SignupPage(),
-    '/home': (context) =>  const FirstPage(),         // ⬅️ استبدال MyHomePage بـ FirstPage لو هي الأساسية
-    '/explore' : (context) => const ExplorePage(),
+    '/home': (context) => const FirstPage(),
+    '/explore': (context) => const ExplorePage(),
     '/account': (context) => const AccountPage(),
     '/cart': (context) => const CartPage(),
     '/favourite': (context) => const FavouritePage(),
   };
 }
+

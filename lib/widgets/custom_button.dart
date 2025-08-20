@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
+  // Make it nullable so the button can be disabled while loading
+  final VoidCallback? onPressed;
   final Color color;
   final Color textColor;
 
@@ -20,16 +21,11 @@ class PrimaryButton extends StatelessWidget {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-        ),
-        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(backgroundColor: color),
+        onPressed: onPressed, // null => disabled
         child: Text(
           text,
-          style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
         ),
       ),
     );

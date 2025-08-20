@@ -19,15 +19,15 @@ class ProductionSection extends StatelessWidget {
         SectionHeader(title: title),
         const SizedBox(height: 16),
         SizedBox(
-          height: 220, // زودنا الارتفاع شوية لتفادي القص أو overflow عمودي
+          height: 220, 
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.symmetric(horizontal: 12), // ثابت ومناسب
+            padding: const EdgeInsets.symmetric(horizontal: 12), 
             itemCount: products.length,
             itemBuilder: (context, index) {
               return ProductCard(product: products[index]);
             },
-            separatorBuilder: (_, __) => const SizedBox(width: 12), // مساحة بين الكروت
+            separatorBuilder: (_, __) => const SizedBox(width: 12),
           ),
         ),
       ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_app/features/groceries/widgets/product_card.dart';
 import 'package:my_app/shared/providers.dart';
-// ✅
+
 
 
 class ExplorePage extends ConsumerWidget {
@@ -10,7 +10,7 @@ class ExplorePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final query = ref.watch(searchQueryProvider); // ✅ ضروري عشان Rebuild
+    final query = ref.watch(searchQueryProvider); 
     final results = ref.watch(searchResultsProvider);
 
     return Scaffold(
@@ -43,7 +43,6 @@ class ExplorePage extends ConsumerWidget {
             ),
           ),
 
-          // 🧾 نتائج البحث
           Expanded(
             child: results.when(
               loading: () => const Center(child: CircularProgressIndicator()),

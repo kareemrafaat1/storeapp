@@ -4,7 +4,7 @@ import 'package:my_app/models/grocery_category_model.dart';
 
 class CategoryChipsList extends StatelessWidget {
   final List<GroceryCategoryModel> categories;
-  final Function(String)? onCategorySelected; // Optional callback for category selection
+  final Function(String)? onCategorySelected; 
 
   const CategoryChipsList({
     super.key,
@@ -37,7 +37,7 @@ class CategoryChipsList extends StatelessWidget {
               },
               child: CategoryChipsCard(
                 category: category,
-                // You can add selection logic if needed
+                
               ),
             ),
           );
